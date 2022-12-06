@@ -11,6 +11,7 @@
 		144EE877293FFCC800AAED8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE876293FFCC800AAED8D /* ContentView.swift */; };
 		144EE879293FFCCD00AAED8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144EE878293FFCCD00AAED8D /* Assets.xcassets */; };
 		144EE87C293FFCCD00AAED8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144EE87B293FFCCD00AAED8D /* Preview Assets.xcassets */; };
+		144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE885293FFE9B00AAED8D /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		144EE876293FFCC800AAED8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		144EE878293FFCCD00AAED8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144EE87B293FFCCD00AAED8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		144EE885293FFE9B00AAED8D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,10 @@
 		144EE873293FFCC800AAED8D /* WeatherHub */ = {
 			isa = PBXGroup;
 			children = (
+				144EE884293FFE6300AAED8D /* Views */,
+				144EE882293FFE1100AAED8D /* Services */,
+				144EE883293FFE5100AAED8D /* Resources */,
 				144EE874293FFCC800AAED8D /* WeatherHubApp.swift */,
-				144EE876293FFCC800AAED8D /* ContentView.swift */,
-				144EE878293FFCCD00AAED8D /* Assets.xcassets */,
 				144EE87A293FFCCD00AAED8D /* Preview Content */,
 			);
 			path = WeatherHub;
@@ -65,6 +68,30 @@
 				144EE87B293FFCCD00AAED8D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		144EE882293FFE1100AAED8D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				144EE885293FFE9B00AAED8D /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		144EE883293FFE5100AAED8D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				144EE878293FFCCD00AAED8D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		144EE884293FFE6300AAED8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				144EE876293FFCC800AAED8D /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				144EE877293FFCC800AAED8D /* ContentView.swift in Sources */,
+				144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */,
 				144EE875293FFCC800AAED8D /* WeatherHubApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
