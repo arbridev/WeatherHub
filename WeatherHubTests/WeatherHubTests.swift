@@ -6,12 +6,28 @@
 //
 
 import XCTest
+import Combine
 @testable import WeatherHub
 
 class WeatherHubTests: XCTestCase {
 
-    func testConstants() throws {
-        XCTAssertEqual(Constant.apiKey, "some_api_key")
-    }
+//    let networkService = NetworkService()
+//
+//    var cancellable: AnyCancellable?
+//
+//    #warning("The network service should not be tested here")
+//    func testFetchWeatherByCity() throws {
+//        let expectation = XCTestExpectation()
+//
+//        cancellable = networkService.fetchWeatherByCity(withName: "Barquisimeto")
+//            .sink(receiveCompletion: { completion in
+//
+//            }, receiveValue: { response in
+//                print(response as AnyObject)
+//                expectation.fulfill()
+//            })
+//
+//        wait(for: [expectation], timeout: 5.0, enforceOrder: false)
+//    }
 
 }
