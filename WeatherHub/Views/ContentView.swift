@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    let weatherLocations = [MockingHelper.weatherByCityResponse]
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        HomeView(weatherLocations: weatherLocations)
     }
 }
 
