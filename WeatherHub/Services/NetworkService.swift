@@ -8,7 +8,13 @@
 import Foundation
 import Combine
 
-class NetworkService {
+protocol NetworkService {
+
+    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherByCityResponse, Error>
+
+}
+
+class OpenWeatherService {
     
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherByCityResponse, Error> {
         let url = URL.fetchByCity(withName: city)
