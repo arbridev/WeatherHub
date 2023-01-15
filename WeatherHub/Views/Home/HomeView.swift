@@ -21,24 +21,28 @@ struct HomeView: View {
                     .padding(.top, 100)
                     .padding(.bottom, 24)
 
-                List {
-                    ForEach(weatherLocations, id: \.id) { weatherLocation in
+                List(
+                    weatherLocations,
+                    id: \.self
+                ) { weatherLocation in
+                    NavigationLink {
+                        DetailView(weatherLocation: weatherLocation)
+                    } label: {
                         LocationWeatherRowView(weatherLocation: weatherLocation)
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 20.0)
-                                    .foregroundColor(.white)
-                                    .padding(.bottom, 16)
-                            )
-                            .listRowSeparator(.hidden)
-                            .padding(.bottom, 16)
                     }
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .foregroundColor(.white)
+                            .padding(.bottom, 16)
+                    )
+                    .listRowSeparator(.hidden)
+                    .padding(.bottom, 16)
                 }
 
                 Spacer()
             }
             .toolbar {
                 Button("More") {
-                    print("onMore")
                     isSelectingMore = true
                 }
             }
@@ -58,15 +62,11 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         let previewWeatherLocation = MockingHelper.weatherByCityResponse
+        let previewWeatherLocationGua = MockingHelper.weatherByCityResponseGua
         let previewWeatherLocations = [
             previewWeatherLocation,
-            previewWeatherLocation
+            previewWeatherLocationGua
         ]
         HomeView(weatherLocations: previewWeatherLocations)
     }
-}
-
-
-extension SwiftUI.Font {
-
 }

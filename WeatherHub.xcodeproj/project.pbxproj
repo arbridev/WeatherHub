@@ -18,6 +18,8 @@
 		144EE87C293FFCCD00AAED8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144EE87B293FFCCD00AAED8D /* Preview Assets.xcassets */; };
 		144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE885293FFE9B00AAED8D /* NetworkService.swift */; };
 		144EE88B29400C0E00AAED8D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE88A29400C0E00AAED8D /* Constants.swift */; };
+		146B250C297389D40013418C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146B250B297389D40013418C /* DetailView.swift */; };
+		146B250E29739DEC0013418C /* weather-by-city-gua.json in Resources */ = {isa = PBXBuildFile; fileRef = 146B250D29739DEC0013418C /* weather-by-city-gua.json */; };
 		147BF4D8294684520082F42C /* WeatherHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147BF4D7294684520082F42C /* WeatherHubTests.swift */; };
 		147FABC32972F7D400EA82CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FABC22972F7D400EA82CE /* HomeView.swift */; };
 		147FABC629730FDC00EA82CE /* LocationWeatherRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FABC529730FDC00EA82CE /* LocationWeatherRowView.swift */; };
@@ -48,6 +50,8 @@
 		144EE8882940015300AAED8D /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		144EE88929400BB400AAED8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		144EE88A29400C0E00AAED8D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		146B250B297389D40013418C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		146B250D29739DEC0013418C /* weather-by-city-gua.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "weather-by-city-gua.json"; sourceTree = "<group>"; };
 		147BF4D5294684520082F42C /* WeatherHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		147BF4D7294684520082F42C /* WeatherHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHubTests.swift; sourceTree = "<group>"; };
 		147BF4DE294686E90082F42C /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1431C1952970DF800000E49D /* weather-by-city.json */,
+				146B250D29739DEC0013418C /* weather-by-city-gua.json */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			children = (
 				144EE876293FFCC800AAED8D /* ContentView.swift */,
 				147FABC429730F9500EA82CE /* Home */,
+				146B250A297389AB0013418C /* Detail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +191,14 @@
 				147BF4DE294686E90082F42C /* Release.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		146B250A297389AB0013418C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				146B250B297389D40013418C /* DetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		147BF4D6294684520082F42C /* WeatherHubTests */ = {
@@ -285,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146B250E29739DEC0013418C /* weather-by-city-gua.json in Resources */,
 				1431C1962970DF800000E49D /* weather-by-city.json in Resources */,
 				144EE87C293FFCCD00AAED8D /* Preview Assets.xcassets in Resources */,
 				144EE879293FFCCD00AAED8D /* Assets.xcassets in Resources */,
@@ -310,6 +325,7 @@
 				144EE877293FFCC800AAED8D /* ContentView.swift in Sources */,
 				144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */,
 				144EE875293FFCC800AAED8D /* WeatherHubApp.swift in Sources */,
+				146B250C297389D40013418C /* DetailView.swift in Sources */,
 				1431C1932970DE450000E49D /* MockingHelper.swift in Sources */,
 				1431C18E2970AA710000E49D /* WeatherByCityResponse.swift in Sources */,
 				1431C1902970AA8E0000E49D /* Weather.swift in Sources */,

@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - Weather
-struct Weather: Codable {
+struct Weather: Codable, Hashable {
     let id: Int
-    let main, description, icon: String
+    let main, description, icon: String?
 }
 
 // MARK: - Wind
-struct Wind: Codable {
-    let speed: Double
-    let deg: Int
-    let gust: Double
+struct Wind: Codable, Hashable {
+    let speed: Double?
+    let deg: Int?
+    let gust: Double?
 }

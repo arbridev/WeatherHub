@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - WeatherByCityResponse
-struct WeatherByCityResponse: Codable {
+struct WeatherByCityResponse: Codable, Hashable {
     let coord: Coord
     let weather: [Weather]
     let base: String
@@ -24,19 +24,21 @@ struct WeatherByCityResponse: Codable {
 }
 
 // MARK: - Clouds
-struct Clouds: Codable {
+struct Clouds: Codable, Hashable {
     let all: Int
 }
 
 // MARK: - Coord
-struct Coord: Codable {
+struct Coord: Codable, Hashable {
     let lon, lat: Double
 }
 
 // MARK: - Main
-struct Main: Codable {
+struct Main: Codable, Hashable {
     let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, humidity, seaLevel, grndLevel: Int
+    let pressure, humidity: Int
+    let seaLevel: Int?
+    let grndLevel: Int?
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -50,7 +52,7 @@ struct Main: Codable {
 }
 
 // MARK: - Sys
-struct Sys: Codable {
+struct Sys: Codable, Hashable {
     let country: String
     let sunrise, sunset: Int
 }
