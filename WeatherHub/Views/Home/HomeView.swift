@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @State private var isSelectingMore: Bool = false
+    @State private var isPresentingAdd: Bool = false
 
     var weatherLocations: [WeatherByCityResponse]
 
@@ -48,11 +49,11 @@ struct HomeView: View {
             }
             .confirmationDialog("More", isPresented: $isSelectingMore) {
                 Button("Add a location") {
-                    print("onAddALocation")
+                    isPresentingAdd = true
                 }
-                Button("Settings") {
-                    print("onSettings")
-                }
+            }
+            .sheet(isPresented: $isPresentingAdd) {
+                AddLocationView()
             }
         }
     }
