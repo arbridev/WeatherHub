@@ -9,10 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @State private var isSelectingMore: Bool = false
-    @State private var isPresentingAdd: Bool = false
-
-    var weatherLocations: [WeatherLocation]
+    @StateObject private var viewModel: ViewModel = ViewModel()
 
     var body: some View {
         NavigationView {
@@ -23,7 +20,7 @@ struct HomeView: View {
                     .padding(.bottom, 24)
 
                 List(
-                    weatherLocations,
+                    viewModel.weatherLocations,
                     id: \.self
                 ) { weatherLocation in
                     NavigationLink {
@@ -44,16 +41,19 @@ struct HomeView: View {
             }
             .toolbar {
                 Button("More") {
-                    isSelectingMore = true
+                    viewModel.isSelectingMore = true
                 }
             }
-            .confirmationDialog("More", isPresented: $isSelectingMore) {
+            .confirmationDialog("More", isPresented: $viewModel.isSelectingMore) {
                 Button("Add a location") {
-                    isPresentingAdd = true
+                    viewModel.isPresentingAdd = true
                 }
             }
-            .sheet(isPresented: $isPresentingAdd) {
+            .sheet(isPresented: $viewModel.isPresentingAdd) {
                 AddLocationView()
+            }
+            .onAppear {
+                viewModel.fetchWeatherLocations()
             }
         }
     }
@@ -62,12 +62,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewWeatherLocation = MockResponse.weatherByCityResponseBar
-        let previewWeatherLocationGua = MockResponse.weatherByCityResponseGua
-        let previewWeatherLocations = [
-            previewWeatherLocation,
-            previewWeatherLocationGua
-        ]
-        HomeView(weatherLocations: previewWeatherLocations)
+        HomeView()
     }
 }

@@ -20,6 +20,7 @@ struct LocationWeatherRowView: View {
         }
         .padding()
     }
+    
 }
 
 struct LocationWeatherRowView_Previews: PreviewProvider {

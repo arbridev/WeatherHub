@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    let weatherLocations = [
-        MockResponse.weatherByCityResponseBar,
-        MockResponse.weatherByCityResponseGua
-    ]
-
     var body: some View {
-        HomeView(weatherLocations: weatherLocations)
+        HomeView()
     }
 }
 

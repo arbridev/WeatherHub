@@ -10,13 +10,14 @@ import Combine
 
 class NetworkServiceMock: ExternalProvider {
 
-    var responseDelay: TimeInterval = 2.0
+    var responseDelay: TimeInterval
 
-    init(responseDelay: TimeInterval) {
+    init(responseDelay: TimeInterval = Constant.Mock.defaultNetworkResponseDelay) {
         self.responseDelay = responseDelay
     }
 
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
+        print(#function)
         let mock: WeatherLocation = MockResponse.weatherByCityResponseBar
         let mockPassthrough = PassthroughSubject<WeatherLocation, Error>()
         DispatchQueue.main.asyncAfter(deadline: .now() + responseDelay) {

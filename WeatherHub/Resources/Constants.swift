@@ -9,9 +9,18 @@ import Foundation
 
 struct Constant {
 
+    private init() {}
+
     static let apiRoot = "https://api.openweathermap.org/data/2.5"
 
     static var apiKey: String {
         Bundle.main.infoDictionary!["API_KEY"] as! String
     }
+
+    struct Mock {
+        private init() {}
+
+        static let defaultNetworkResponseDelay = TimeInterval(2.0)
+    }
+
 }
