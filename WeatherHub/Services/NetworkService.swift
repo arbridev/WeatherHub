@@ -8,19 +8,19 @@
 import Foundation
 import Combine
 
-protocol NetworkService {
+protocol ExternalProvider {
 
-    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherByCityResponse, Error>
+    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error>
 
 }
 
-class OpenWeatherService {
+class NetworkService: ExternalProvider {
     
-    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherByCityResponse, Error> {
+    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
         let url = URL.fetchByCity(withName: city)
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
-            .decode(type: WeatherByCityResponse.self, decoder: JSONDecoder())
+            .decode(type: WeatherLocation.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

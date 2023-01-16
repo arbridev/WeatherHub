@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class NetworkServiceMock: NetworkService {
+class NetworkServiceMock: ExternalProvider {
 
     var responseDelay: TimeInterval = 2.0
 
@@ -16,9 +16,9 @@ class NetworkServiceMock: NetworkService {
         self.responseDelay = responseDelay
     }
 
-    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherByCityResponse, Error> {
-        let mock: WeatherByCityResponse = MockingHelper.parseJSON(fromFileWithName: "weather-by-city")
-        let mockPassthrough = PassthroughSubject<WeatherByCityResponse, Error>()
+    func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
+        let mock: WeatherLocation = MockResponse.weatherByCityResponseBar
+        let mockPassthrough = PassthroughSubject<WeatherLocation, Error>()
         DispatchQueue.main.asyncAfter(deadline: .now() + responseDelay) {
             mockPassthrough.send(mock)
         }

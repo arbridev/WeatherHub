@@ -9,13 +9,7 @@ import Foundation
 
 struct MockingHelper {
 
-    static var weatherByCityResponse: WeatherByCityResponse {
-        MockingHelper.parseJSON(fromFileWithName: "weather-by-city")
-    }
-
-    static var weatherByCityResponseGua: WeatherByCityResponse {
-        MockingHelper.parseJSON(fromFileWithName: "weather-by-city-gua")
-    }
+    private init() {}
 
     static func parseJSON<T: Decodable>(fromFileWithName fileName: String) -> T {
         var decodedObject: T!

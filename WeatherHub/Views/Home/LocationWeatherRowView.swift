@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LocationWeatherRowView: View {
 
-    var weatherLocation: WeatherByCityResponse
+    var weatherLocation: WeatherLocation
 
     var body: some View {
         HStack {
@@ -24,7 +24,7 @@ struct LocationWeatherRowView: View {
 
 struct LocationWeatherRowView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewWeatherLocation = MockingHelper.weatherByCityResponse
+        let previewWeatherLocation = MockResponse.weatherByCityResponseBar
         LocationWeatherRowView(weatherLocation: previewWeatherLocation)
             .previewLayout(.fixed(width: 400, height: 100))
     }

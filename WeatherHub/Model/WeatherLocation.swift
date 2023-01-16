@@ -1,5 +1,5 @@
 //
-//  WeatherByCityResponse.swift
+//  WeatherLocation.swift
 //  WeatherHub
 //
 //  Created by Armando Brito on 12/1/23.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - WeatherByCityResponse
-struct WeatherByCityResponse: Codable, Hashable {
+// MARK: - WeatherLocation
+struct WeatherLocation: Codable, Hashable {
     let coord: Coord
     let weather: [Weather]
     let base: String

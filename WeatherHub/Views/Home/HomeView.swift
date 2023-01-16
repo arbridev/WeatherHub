@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var isSelectingMore: Bool = false
     @State private var isPresentingAdd: Bool = false
 
-    var weatherLocations: [WeatherByCityResponse]
+    var weatherLocations: [WeatherLocation]
 
     var body: some View {
         NavigationView {
@@ -62,8 +62,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewWeatherLocation = MockingHelper.weatherByCityResponse
-        let previewWeatherLocationGua = MockingHelper.weatherByCityResponseGua
+        let previewWeatherLocation = MockResponse.weatherByCityResponseBar
+        let previewWeatherLocationGua = MockResponse.weatherByCityResponseGua
         let previewWeatherLocations = [
             previewWeatherLocation,
             previewWeatherLocationGua

@@ -11,7 +11,7 @@ import Combine
 
 class WeatherHubTests: XCTestCase {
 
-    var networkService: NetworkService!
+    var networkService: Network!
     var cancellable: AnyCancellable?
 
     override func setUpWithError() throws {
@@ -41,11 +41,11 @@ class WeatherHubTests: XCTestCase {
             XCTFail("No bundle identifier")
             return
         }
-        let userDefaults = UserDefaults(suiteName: "test_\(bundleIdentifier)")
-        let persistenceService: Persistence = PersistenceService()
+        let userDefaults = UserDefaults(suiteName: "test_\(bundleIdentifier)")!
+        let persistenceService: Persistence = PersistenceService(userDefaults: userDefaults)
         persistenceService.removeAllWeatherLocations()
         XCTAssertNil(persistenceService.getWeatherLocations())
-        let weatherLocation = MockingHelper.weatherByCityResponse
+        let weatherLocation = MockResponse.weatherByCityResponseBar
         try persistenceService.addWeatherLocation(weatherLocation)
         XCTAssertTrue(persistenceService.getWeatherLocations()?.count == 1)
         try persistenceService.removeWeatherLocation(weatherLocation)

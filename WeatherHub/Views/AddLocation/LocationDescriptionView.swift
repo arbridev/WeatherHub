@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LocationDescriptionView: View {
     
-    var weatherLocation: WeatherByCityResponse
+    var weatherLocation: WeatherLocation
 
     var body: some View {
         VStack {
@@ -42,7 +42,7 @@ struct LocationDescriptionView: View {
 
 struct LocationDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewWeatherLocation = MockingHelper.weatherByCityResponse
+        let previewWeatherLocation = MockResponse.weatherByCityResponseBar
         LocationDescriptionView(weatherLocation: previewWeatherLocation)
     }
 }

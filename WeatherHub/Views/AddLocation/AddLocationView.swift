@@ -10,7 +10,7 @@ import SwiftUI
 struct AddLocationView: View {
 
     @State private var searchQuery: String = ""
-    @State private var searchResult: WeatherByCityResponse?
+    @State private var searchResult: WeatherLocation?
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -50,7 +50,7 @@ struct AddLocationView: View {
         }
         .padding()
         .onAppear {
-            searchResult = MockingHelper.weatherByCityResponse
+            searchResult = MockResponse.weatherByCityResponseBar
         }
     }
 }

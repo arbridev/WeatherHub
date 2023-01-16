@@ -9,9 +9,9 @@ import Foundation
 
 protocol Persistence {
 
-    func addWeatherLocation(_ weatherLocation: WeatherByCityResponse) throws
-    func getWeatherLocations() -> [WeatherByCityResponse]?
-    func removeWeatherLocation(_ weatherLocation: WeatherByCityResponse) throws
+    func addWeatherLocation(_ weatherLocation: WeatherLocation) throws
+    func getWeatherLocations() -> [WeatherLocation]?
+    func removeWeatherLocation(_ weatherLocation: WeatherLocation) throws
     func removeAllWeatherLocations()
 
 }
@@ -28,7 +28,7 @@ class PersistenceService: Persistence {
         self.userDefaults = userDefaults
     }
 
-    func addWeatherLocation(_ weatherLocation: WeatherByCityResponse) throws {
+    func addWeatherLocation(_ weatherLocation: WeatherLocation) throws {
         if var weatherLocations = getWeatherLocations() {
             weatherLocations.append(weatherLocation)
             try userDefaults.setObject(weatherLocations, forKey: PersKey.weatherLocations)
@@ -38,16 +38,16 @@ class PersistenceService: Persistence {
         }
     }
 
-    func getWeatherLocations() -> [WeatherByCityResponse]? {
+    func getWeatherLocations() -> [WeatherLocation]? {
         try? userDefaults.getObject(forKey: PersKey.weatherLocations)
     }
 
-    func getWeatherLocations() throws -> [WeatherByCityResponse] {
+    func getWeatherLocations() throws -> [WeatherLocation] {
         try userDefaults.getObject(forKey: PersKey.weatherLocations)
     }
 
-    func removeWeatherLocation(_ weatherLocation: WeatherByCityResponse) throws {
-        var weatherLocations: [WeatherByCityResponse] = try getWeatherLocations()
+    func removeWeatherLocation(_ weatherLocation: WeatherLocation) throws {
+        var weatherLocations: [WeatherLocation] = try getWeatherLocations()
         if let index = weatherLocations.firstIndex(where: { $0.id == weatherLocation.id }) {
             weatherLocations.remove(at: index)
             try userDefaults.setObject(weatherLocations, forKey: PersKey.weatherLocations)
