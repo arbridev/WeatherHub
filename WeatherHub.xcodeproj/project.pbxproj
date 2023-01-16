@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1418E6122974CCC100F3419D /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418E6112974CCC100F3419D /* PersistenceService.swift */; };
+		1418E6152975940C00F3419D /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418E6142975940C00F3419D /* UserDefaults+Codable.swift */; };
 		1431C18E2970AA710000E49D /* WeatherByCityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431C18D2970AA710000E49D /* WeatherByCityResponse.swift */; };
 		1431C1902970AA8E0000E49D /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431C18F2970AA8E0000E49D /* Weather.swift */; };
 		1431C1932970DE450000E49D /* MockingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431C1922970DE450000E49D /* MockingHelper.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1418E6112974CCC100F3419D /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		1418E6142975940C00F3419D /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		1431C18D2970AA710000E49D /* WeatherByCityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherByCityResponse.swift; sourceTree = "<group>"; };
 		1431C18F2970AA8E0000E49D /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1431C1922970DE450000E49D /* MockingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingHelper.swift; sourceTree = "<group>"; };
@@ -82,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1418E613297592E300F3419D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1418E6142975940C00F3419D /* UserDefaults+Codable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1431C18C2970A9740000E49D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				144EE885293FFE9B00AAED8D /* NetworkService.swift */,
+				1418E6112974CCC100F3419D /* PersistenceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -172,6 +185,7 @@
 		144EE883293FFE5100AAED8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1418E613297592E300F3419D /* Extensions */,
 				144EE878293FFCCD00AAED8D /* Assets.xcassets */,
 				144EE88A29400C0E00AAED8D /* Constants.swift */,
 			);
@@ -338,9 +352,11 @@
 				146B251129744F520013418C /* AddLocationView.swift in Sources */,
 				1431C1992970E4040000E49D /* NetworkServiceMock.swift in Sources */,
 				144EE877293FFCC800AAED8D /* ContentView.swift in Sources */,
+				1418E6152975940C00F3419D /* UserDefaults+Codable.swift in Sources */,
 				144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */,
 				144EE875293FFCC800AAED8D /* WeatherHubApp.swift in Sources */,
 				146B250C297389D40013418C /* DetailView.swift in Sources */,
+				1418E6122974CCC100F3419D /* PersistenceService.swift in Sources */,
 				1431C1932970DE450000E49D /* MockingHelper.swift in Sources */,
 				1431C18E2970AA710000E49D /* WeatherByCityResponse.swift in Sources */,
 				1431C1902970AA8E0000E49D /* Weather.swift in Sources */,

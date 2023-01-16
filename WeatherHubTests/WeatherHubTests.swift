@@ -36,4 +36,20 @@ class WeatherHubTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0, enforceOrder: false)
     }
 
+    func testPersistence() throws {
+        guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+            XCTFail("No bundle identifier")
+            return
+        }
+        let userDefaults = UserDefaults(suiteName: "test_\(bundleIdentifier)")
+        let persistenceService: Persistence = PersistenceService()
+        persistenceService.removeAllWeatherLocations()
+        XCTAssertNil(persistenceService.getWeatherLocations())
+        let weatherLocation = MockingHelper.weatherByCityResponse
+        try persistenceService.addWeatherLocation(weatherLocation)
+        XCTAssertTrue(persistenceService.getWeatherLocations()?.count == 1)
+        try persistenceService.removeWeatherLocation(weatherLocation)
+        XCTAssertTrue(persistenceService.getWeatherLocations()!.isEmpty)
+    }
+
 }
