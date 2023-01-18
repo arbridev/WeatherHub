@@ -11,6 +11,7 @@ import Combine
 protocol ExternalProvider {
 
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error>
+    func fetchWeather(fromCities cities: [String]) -> AnyPublisher<[WeatherLocation], Error>
 
 }
 
@@ -19,9 +20,18 @@ class NetworkService: ExternalProvider {
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
         let url = URL.fetchByCity(withName: city)
         return URLSession.shared.dataTaskPublisher(for: url)
+            .receive(on: DispatchQueue.main)
             .map(\.data)
             .decode(type: WeatherLocation.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    func fetchWeather(fromCities cities: [String]) -> AnyPublisher<[WeatherLocation], Error> {
+        let publishers = cities.map { city in
+            fetchWeatherByCity(withName: city)
+        }
+        return Publishers.MergeMany(publishers)
+            .collect()
             .eraseToAnyPublisher()
     }
     

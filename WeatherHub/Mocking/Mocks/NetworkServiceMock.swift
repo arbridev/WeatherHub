@@ -25,4 +25,16 @@ class NetworkServiceMock: ExternalProvider {
         return mockPassthrough.eraseToAnyPublisher()
     }
 
+    func fetchWeather(fromCities cities: [String]) -> AnyPublisher<[WeatherLocation], Error> {
+        let weatherLocations = [
+            MockResponse.weatherByCityResponseBar,
+            MockResponse.weatherByCityResponseGua
+        ]
+        let mockPassthrough = PassthroughSubject<[WeatherLocation], Error>()
+        DispatchQueue.main.asyncAfter(deadline: .now() + responseDelay) {
+            mockPassthrough.send(weatherLocations)
+        }
+        return mockPassthrough.eraseToAnyPublisher()
+    }
+
 }

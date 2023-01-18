@@ -11,7 +11,7 @@ import Combine
 
 class WeatherHubTests: XCTestCase {
 
-    var networkService: Network!
+    var networkService: ExternalProvider!
     var cancellable: AnyCancellable?
 
     override func setUpWithError() throws {
