@@ -17,7 +17,7 @@ class NetworkServiceMock: ExternalProvider {
     }
 
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
-        print(#function)
+        print("\(self)", #function)
         let mock: WeatherLocation = MockResponse.weatherByCityResponseBar
         let mockPassthrough = PassthroughSubject<WeatherLocation, Error>()
         DispatchQueue.main.asyncAfter(deadline: .now() + responseDelay) {
@@ -27,6 +27,7 @@ class NetworkServiceMock: ExternalProvider {
     }
 
     func fetchWeather(fromCities cities: [String]) -> AnyPublisher<[WeatherLocation], Error> {
+        print("\(self)", #function)
         let weatherLocations = [
             MockResponse.weatherByCityResponseBar,
             MockResponse.weatherByCityResponseGua

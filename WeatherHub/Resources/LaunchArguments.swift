@@ -13,6 +13,10 @@ enum LaunchArgument: String {
 
 class LaunchArguments {
 
+    static var shared = LaunchArguments()
+
+    private init() {}
+
     func contains(_ launchArgument: LaunchArgument) -> Bool {
         CommandLine.arguments.contains(launchArgument.rawValue)
     }

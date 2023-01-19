@@ -45,10 +45,12 @@ fileprivate extension URL {
     }
 
     static func fetchByCity(withName city: String) -> URL {
-        makeForEndpoint(
+        let usesMetric = NSLocale().usesMetricSystem
+        return makeForEndpoint(
             "/weather",
             queryComponents: QueryComponent(field: "q", value: city),
-            QueryComponent(field: "appid", value: Constant.apiKey)
+            QueryComponent(field: "appid", value: Constant.apiKey),
+            QueryComponent(field: "units", value: usesMetric ? "metric" : "imperial")
         )
     }
 

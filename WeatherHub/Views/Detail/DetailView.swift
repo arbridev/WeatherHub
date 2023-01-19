@@ -10,6 +10,10 @@ import SwiftUI
 struct DetailView: View {
 
     var weatherLocation: WeatherLocation
+    var temperatureSymbol: String {
+        let usesMetric = NSLocale.current.usesMetricSystem
+        return usesMetric ? "℃" : "℉"
+    }
 
     var body: some View {
         VStack {
@@ -19,14 +23,14 @@ struct DetailView: View {
             Text(weatherLocation.sys.country)
                 .font(.title3)
 
-            Text("\(Int(weatherLocation.main.temp)) K")
+            Text("\(Int(weatherLocation.main.temp)) \(temperatureSymbol)")
                 .font(.title3)
                 .padding(.top, 24)
 
             HStack {
-                Text("Min: \(Int(weatherLocation.main.tempMin)) K")
+                Text("Min: \(Int(weatherLocation.main.tempMin)) \(temperatureSymbol)")
                 Text("/")
-                Text("Max: \(Int(weatherLocation.main.tempMax)) K")
+                Text("Max: \(Int(weatherLocation.main.tempMax)) \(temperatureSymbol)")
             }
             .padding(.top, 4)
 

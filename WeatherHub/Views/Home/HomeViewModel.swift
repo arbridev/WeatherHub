@@ -24,7 +24,7 @@ extension HomeView {
             persistenceService: Persistence = PersistenceService(),
             networkService: ExternalProvider = NetworkService()
         ) {
-            guard !LaunchArguments().contains(.useMocks) else {
+            guard !LaunchArguments.shared.contains(.useMocks) else {
                 self.persistenceService = PersistenceServiceMock()
                 self.networkService = NetworkServiceMock()
                 return
@@ -34,8 +34,8 @@ extension HomeView {
         }
 
         func fetchWeatherLocations() {
-            guard let persWeatherLocations = persistenceService.getWeatherLocations(), !persWeatherLocations.isEmpty
-            else {
+            guard let persWeatherLocations = persistenceService.getWeatherLocations(),
+                    !persWeatherLocations.isEmpty else {
                 return
             }
             cancellable = networkService.fetchWeather(
