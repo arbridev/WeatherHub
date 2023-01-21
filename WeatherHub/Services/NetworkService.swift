@@ -16,10 +16,18 @@ protocol ExternalProvider {
 }
 
 class NetworkService: ExternalProvider {
+
+    private var session: URLSession!
+
+    init(shouldLog: Bool = false) {
+        self.session = shouldLog ?
+        URLSession(configuration: HTTPLogger.defaultSessionConfiguration) :
+        URLSession.shared
+    }
     
     func fetchWeatherByCity(withName city: String) -> AnyPublisher<WeatherLocation, Error> {
         let url = URL.fetchByCity(withName: city)
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return session.dataTaskPublisher(for: url)
             .receive(on: DispatchQueue.main)
             .map(\.data)
             .decode(type: WeatherLocation.self, decoder: JSONDecoder())

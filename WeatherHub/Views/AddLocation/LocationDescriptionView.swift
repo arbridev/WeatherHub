@@ -16,15 +16,17 @@ struct LocationDescriptionView: View {
             Text(weatherLocation.name)
                 .font(.title2)
 
-            Text(weatherLocation.sys.country)
+            Text(weatherLocation.sys?.country ?? "")
                 .font(.title3)
 
             VStack {
                 Text("Location")
                     .font(.title3)
                     .bold()
-                Text("Longitude: \(weatherLocation.coord.lon)")
-                Text("Latitude: \(weatherLocation.coord.lat)")
+                if let coord = weatherLocation.coord {
+                    Text("Longitude: \(coord.lon)")
+                    Text("Latitude: \(coord.lat)")
+                }
             }
             .padding(.top, 4)
 
@@ -34,8 +36,10 @@ struct LocationDescriptionView: View {
                     .padding(.top, 24)
             }
 
-            Text("Time zone: \(weatherLocation.timezone/3600) hours")
-                .padding(.top, 24)
+            if let timezone = weatherLocation.timezone {
+                Text("Time zone: \(timezone/3600) hours")
+                    .padding(.top, 24)
+            }
         }
     }
 }

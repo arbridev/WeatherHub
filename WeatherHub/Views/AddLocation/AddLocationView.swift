@@ -10,7 +10,8 @@ import SwiftUI
 struct AddLocationView: View {
 
     @State private var searchQuery: String = ""
-    @State private var searchResult: WeatherLocation?
+    @StateObject private var viewModel = ViewModel()
+    @FocusState private var searchFieldIsFocused: Bool
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -26,6 +27,10 @@ struct AddLocationView: View {
             }
 
             TextField("Search", text: $searchQuery)
+                .focused($searchFieldIsFocused)
+                .onChange(of: searchQuery, perform: { newValue in
+                    viewModel.fetchWeatherLocation(withName: searchQuery)
+                })
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .border(.secondary)
@@ -33,7 +38,7 @@ struct AddLocationView: View {
 
             Spacer()
 
-            if let searchResult {
+            if let searchResult = viewModel.weatherLocation {
                 LocationDescriptionView(weatherLocation: searchResult)
             } else {
                 EmptyView()
@@ -42,7 +47,8 @@ struct AddLocationView: View {
             Spacer()
 
             Button {
-                print("onAddLocation")
+                viewModel.addLocation()
+                dismiss()
             } label: {
                 Text("Add this new location")
             }
@@ -50,7 +56,7 @@ struct AddLocationView: View {
         }
         .padding()
         .onAppear {
-            searchResult = MockResponse.weatherByCityResponseBar
+            searchFieldIsFocused = true
         }
     }
 }

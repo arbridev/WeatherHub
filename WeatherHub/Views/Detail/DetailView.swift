@@ -20,7 +20,7 @@ struct DetailView: View {
             Text(weatherLocation.name)
                 .font(.title2)
 
-            Text(weatherLocation.sys.country)
+            Text(weatherLocation.sys?.country ?? "")
                 .font(.title3)
 
             Text("\(Int(weatherLocation.main.temp)) \(temperatureSymbol)")
@@ -34,7 +34,7 @@ struct DetailView: View {
             }
             .padding(.top, 4)
 
-            Text(weatherLocation.weather.first?.main ?? "")
+            Text(weatherLocation.weather?.first?.main ?? "")
                 .padding(.top, 24)
         }
         .navigationTitle("Weather Location")
