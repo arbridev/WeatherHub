@@ -14,7 +14,7 @@ struct LocationDescriptionView: View {
     var body: some View {
         VStack {
             Text(weatherLocation.name)
-                .font(.title2)
+                .font(.title)
 
             Text(weatherLocation.sys?.country ?? "")
                 .font(.title3)
@@ -23,22 +23,40 @@ struct LocationDescriptionView: View {
                 Text("Location")
                     .font(.title3)
                     .bold()
+                    .padding(.bottom, 4)
                 if let coord = weatherLocation.coord {
-                    Text("Longitude: \(coord.lon)")
-                    Text("Latitude: \(coord.lat)")
+                    HStack {
+                        Text("Longitude:")
+                            .fontWeight(.medium)
+                        Text("\(coord.lon)")
+                    }
+                    HStack {
+                        Text("Latitude:")
+                            .fontWeight(.medium)
+                        Text("\(coord.lat)")
+                    }
                 }
             }
-            .padding(.top, 4)
+            .padding(.top, 12)
 
             if let seaLevel = weatherLocation.main.seaLevel {
-                Text("Sea level: \(Int(seaLevel)) meters")
-                    .font(.title3)
-                    .padding(.top, 24)
+                HStack {
+                    Text("Sea level:")
+                        .font(.title3)
+                        .fontWeight(.medium)
+                    Text("\(Int(seaLevel)) meters")
+                        .font(.title3)
+                }
+                .padding(.top, 24)
             }
 
             if let timezone = weatherLocation.timezone {
-                Text("Time zone: \(timezone/3600) hours")
-                    .padding(.top, 24)
+                HStack {
+                    Text("Time zone:")
+                        .fontWeight(.medium)
+                    Text("\(timezone/3600) hours")
+                }
+                .padding(.top, 24)
             }
         }
     }

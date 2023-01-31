@@ -26,6 +26,9 @@
 		146B250E29739DEC0013418C /* weather-by-city-gua.json in Resources */ = {isa = PBXBuildFile; fileRef = 146B250D29739DEC0013418C /* weather-by-city-gua.json */; };
 		146B251129744F520013418C /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146B251029744F520013418C /* AddLocationView.swift */; };
 		146B2513297451360013418C /* LocationDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146B2512297451350013418C /* LocationDescriptionView.swift */; };
+		146E3AE42989520400BE5806 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E3AE32989520400BE5806 /* UIColor+Hex.swift */; };
+		146E3AE6298953A500BE5806 /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E3AE5298953A500BE5806 /* Color+Custom.swift */; };
+		146E3AE82989A3DB00BE5806 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E3AE72989A3DB00BE5806 /* NoResultView.swift */; };
 		147BF4D8294684520082F42C /* WeatherHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147BF4D7294684520082F42C /* WeatherHubTests.swift */; };
 		147FABC32972F7D400EA82CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FABC22972F7D400EA82CE /* HomeView.swift */; };
 		147FABC629730FDC00EA82CE /* LocationWeatherRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FABC529730FDC00EA82CE /* LocationWeatherRowView.swift */; };
@@ -68,6 +71,9 @@
 		146B250D29739DEC0013418C /* weather-by-city-gua.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "weather-by-city-gua.json"; sourceTree = "<group>"; };
 		146B251029744F520013418C /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
 		146B2512297451350013418C /* LocationDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDescriptionView.swift; sourceTree = "<group>"; };
+		146E3AE32989520400BE5806 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		146E3AE5298953A500BE5806 /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
+		146E3AE72989A3DB00BE5806 /* NoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
 		147BF4D5294684520082F42C /* WeatherHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		147BF4D7294684520082F42C /* WeatherHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHubTests.swift; sourceTree = "<group>"; };
 		147BF4DE294686E90082F42C /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				1418E6142975940C00F3419D /* UserDefaults+Codable.swift */,
+				146E3AE32989520400BE5806 /* UIColor+Hex.swift */,
+				146E3AE5298953A500BE5806 /* Color+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 				146B251029744F520013418C /* AddLocationView.swift */,
 				142814DF2979B74300D838C3 /* AddLocationViewModel.swift */,
 				146B2512297451350013418C /* LocationDescriptionView.swift */,
+				146E3AE72989A3DB00BE5806 /* NoResultView.swift */,
 			);
 			path = AddLocation;
 			sourceTree = "<group>";
@@ -370,7 +379,9 @@
 				14D4017729761177001D7858 /* HomeViewModel.swift in Sources */,
 				146B251129744F520013418C /* AddLocationView.swift in Sources */,
 				142814E02979B74300D838C3 /* AddLocationViewModel.swift in Sources */,
+				146E3AE82989A3DB00BE5806 /* NoResultView.swift in Sources */,
 				1431C1992970E4040000E49D /* NetworkServiceMock.swift in Sources */,
+				146E3AE42989520400BE5806 /* UIColor+Hex.swift in Sources */,
 				144EE877293FFCC800AAED8D /* ContentView.swift in Sources */,
 				1418E6152975940C00F3419D /* UserDefaults+Codable.swift in Sources */,
 				144EE886293FFE9B00AAED8D /* NetworkService.swift in Sources */,
@@ -384,6 +395,7 @@
 				1431C1902970AA8E0000E49D /* Weather.swift in Sources */,
 				148F9B74297C3E2900428636 /* HTTPLogger.swift in Sources */,
 				143FAC2F2976E9A600025B4F /* PersistenceServiceMock.swift in Sources */,
+				146E3AE6298953A500BE5806 /* Color+Custom.swift in Sources */,
 				144EE88B29400C0E00AAED8D /* Constants.swift in Sources */,
 				147FABC629730FDC00EA82CE /* LocationWeatherRowView.swift in Sources */,
 				146B2513297451360013418C /* LocationDescriptionView.swift in Sources */,

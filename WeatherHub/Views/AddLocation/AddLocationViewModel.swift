@@ -14,8 +14,10 @@ extension AddLocationView {
     @MainActor class ViewModel: ObservableObject {
 
         @Published private(set) var weatherLocation: WeatherLocation?
+        @Published var isLoading = false
 
         var mainData: AppData?
+        
         private let persistenceService: Persistence
         private let networkService: ExternalProvider
         private var cancellables = Set<AnyCancellable>()
@@ -36,7 +38,7 @@ extension AddLocationView {
         }
 
         func fetchWeatherLocation(withName name: String) {
-            guard name.count > 1 else {
+            guard name.count > Constant.searchQueryMinimum else {
                 return
             }
             debounceableCancellable = debounceablePublisher
@@ -48,18 +50,23 @@ extension AddLocationView {
         }
 
         private func fetchWeatherLocationDebounced(withName name: String) {
+            isLoading = true
             networkService.fetchWeatherByCity(withName: name)
-                .catch({ error -> AnyPublisher<WeatherLocation, Never> in
+                .catch({ [weak self] error -> AnyPublisher<WeatherLocation, Never> in
                     let _ = print("catcherror", error)
+                    self?.isLoading = false
+                    self?.weatherLocation = nil
                     return Empty(completeImmediately: true).eraseToAnyPublisher()
                 })
                 .sink(receiveCompletion: { completion in
+                    self.isLoading = false
                     switch completion {
                         case .failure(let error): print("Error \(error)")
                         case .finished: print("Publisher is finished")
                     }
                 }, receiveValue: { [weak self] value in
                     dump(value)
+                    self?.isLoading = false
                     self?.weatherLocation = value
                 })
                 .store(in: &cancellables)

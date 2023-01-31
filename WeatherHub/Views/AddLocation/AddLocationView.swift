@@ -10,10 +10,10 @@ import SwiftUI
 struct AddLocationView: View {
 
     @EnvironmentObject var mainData: AppData
-    @State private var searchQuery: String = ""
-    @StateObject private var viewModel = ViewModel()
-    @FocusState private var searchFieldIsFocused: Bool
     @Environment(\.dismiss) var dismiss
+    @StateObject private var viewModel = ViewModel()
+    @State private var searchQuery: String = ""
+    @FocusState private var searchFieldIsFocused: Bool
 
     var body: some View {
         VStack {
@@ -21,28 +21,53 @@ struct AddLocationView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.Custom.Button.primary)
                 }
 
                 Spacer()
             }
+            .padding(.bottom, 12)
 
-            TextField("Search", text: $searchQuery)
-                .focused($searchFieldIsFocused)
-                .onChange(of: searchQuery, perform: { newValue in
-                    viewModel.fetchWeatherLocation(withName: searchQuery)
-                })
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .border(.secondary)
-                .padding(.top, 24)
+            HStack {
+                TextField("Search city", text: $searchQuery)
+                    .focused($searchFieldIsFocused)
+                    .onChange(of: searchQuery, perform: { newValue in
+                        viewModel.fetchWeatherLocation(withName: searchQuery)
+                    })
+                    .tint(Color.Custom.Font.announcement)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.Custom.Background.inter, lineWidth: 2)
+            )
+            .padding(.top, 12)
 
             Spacer()
 
-            if let searchResult = viewModel.weatherLocation {
-                LocationDescriptionView(weatherLocation: searchResult)
+            if viewModel.isLoading {
+                NoResultView(isLoading: $viewModel.isLoading, title: nil, suggestion: nil)
             } else {
-                EmptyView()
+                if searchQuery.count <= Constant.searchQueryMinimum {
+                    NoResultView(
+                        isLoading: $viewModel.isLoading,
+                        title: "Search for a city",
+                        suggestion: "Type the name of the city in the field above"
+                    )
+                } else if let searchResult = viewModel.weatherLocation {
+                    LocationDescriptionView(weatherLocation: searchResult)
+                } else {
+                    NoResultView(
+                        isLoading: $viewModel.isLoading,
+                        title: "No city was found",
+                        suggestion: nil
+                    )
+                }
             }
 
             Spacer()
@@ -52,8 +77,16 @@ struct AddLocationView: View {
                 dismiss()
             } label: {
                 Text("Add this new location")
+                    .font(.title3)
+                    .bold()
+                    .foregroundColor(Color.Custom.Font.darkContrast)
+                    .padding()
             }
-            .padding(.bottom, 16)
+            .disabled(viewModel.weatherLocation == nil)
+            .background(viewModel.weatherLocation != nil ?
+                        Color.Custom.Button.primary :
+                            Color.Custom.Button.secondary)
+            .clipShape(Capsule())
         }
         .padding()
         .onAppear {
@@ -65,6 +98,9 @@ struct AddLocationView: View {
 
 struct AddLocationView_Previews: PreviewProvider {
     static var previews: some View {
-        AddLocationView()
+        let mainData = AppData()
+        mainData.weatherLocations = [MockResponse.weatherByCityResponseGua]
+        return AddLocationView()
+            .environmentObject(mainData)
     }
 }
