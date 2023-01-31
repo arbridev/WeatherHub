@@ -26,12 +26,17 @@ class PersistenceServiceMock: Persistence {
     func removeWeatherLocation(_ weatherLocation: WeatherLocation) throws {
         print("Tried to remove a weather location from persistence")
         print(weatherLocation as AnyObject)
-        return
+    }
+
+    func removeWeatherLocations(_ weatherLocations: [WeatherLocation]) throws {
+        print("Tried to remove several weather locations from persistence")
+        for (index, weatherLocation) in weatherLocations.enumerated() {
+            print("\(index).", weatherLocation.name)
+        }
     }
 
     func removeAllWeatherLocations() {
         print("Tried to remove a weather locations from persistence")
-        return
     }
 
 }

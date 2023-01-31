@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @EnvironmentObject var mainData: AppData
     @StateObject private var viewModel: ViewModel = ViewModel()
 
     var body: some View {
@@ -19,22 +20,22 @@ struct HomeView: View {
                     .padding(.top, 100)
                     .padding(.bottom, 24)
 
-                List(
-                    viewModel.weatherLocations,
-                    id: \.self
-                ) { weatherLocation in
-                    NavigationLink {
-                        DetailView(weatherLocation: weatherLocation)
-                    } label: {
-                        LocationWeatherRowView(weatherLocation: weatherLocation)
+                List {
+                    ForEach(mainData.weatherLocations, id: \.self) { weatherLocation in
+                        NavigationLink {
+                            DetailView(weatherLocation: weatherLocation)
+                        } label: {
+                            LocationWeatherRowView(weatherLocation: weatherLocation)
+                        }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 20.0)
+                                .foregroundColor(.white)
+                                .padding(.bottom, 16)
+                        )
+                        .listRowSeparator(.hidden)
+                        .padding(.bottom, 16)
                     }
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 20.0)
-                            .foregroundColor(.white)
-                            .padding(.bottom, 16)
-                    )
-                    .listRowSeparator(.hidden)
-                    .padding(.bottom, 16)
+                    .onDelete(perform: deleteLocations(fromIndexSet:))
                 }
 
                 Spacer()
@@ -53,9 +54,17 @@ struct HomeView: View {
                 AddLocationView()
             }
             .onAppear {
+                viewModel.mainData = mainData
                 viewModel.fetchWeatherLocations()
             }
         }
+    }
+
+    func deleteLocations(fromIndexSet indexSet: IndexSet?) {
+        guard let indices = indexSet else {
+            return
+        }
+        viewModel.removeWeatherLocations(fromIndices: indices)
     }
 
 }

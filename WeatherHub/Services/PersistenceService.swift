@@ -12,6 +12,7 @@ protocol Persistence {
     func addWeatherLocation(_ weatherLocation: WeatherLocation) throws
     func getWeatherLocations() -> [WeatherLocation]?
     func removeWeatherLocation(_ weatherLocation: WeatherLocation) throws
+    func removeWeatherLocations(_ weatherLocations: [WeatherLocation]) throws
     func removeAllWeatherLocations()
 
 }
@@ -52,6 +53,16 @@ class PersistenceService: Persistence {
             weatherLocations.remove(at: index)
             try userDefaults.setObject(weatherLocations, forKey: PersKey.weatherLocations)
         }
+    }
+
+    func removeWeatherLocations(_ weatherLocations: [WeatherLocation]) throws {
+        var old: [WeatherLocation] = try getWeatherLocations()
+        removeAllWeatherLocations()
+        let indicesToRemove = old.enumerated().compactMap { index, weatherLocation in
+            weatherLocations.contains(weatherLocation) ? index : nil
+        }
+        old.remove(atOffsets: IndexSet(indicesToRemove))
+        try userDefaults.setObject(old, forKey: PersKey.weatherLocations)
     }
 
     func removeAllWeatherLocations() {

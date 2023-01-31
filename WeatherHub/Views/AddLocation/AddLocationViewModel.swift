@@ -15,6 +15,7 @@ extension AddLocationView {
 
         @Published private(set) var weatherLocation: WeatherLocation?
 
+        var mainData: AppData?
         private let persistenceService: Persistence
         private let networkService: ExternalProvider
         private var cancellables = Set<AnyCancellable>()
@@ -69,6 +70,7 @@ extension AddLocationView {
                 return
             }
             try! persistenceService.addWeatherLocation(weatherLocation)
+            mainData?.weatherLocations.append(weatherLocation)
         }
 
     }

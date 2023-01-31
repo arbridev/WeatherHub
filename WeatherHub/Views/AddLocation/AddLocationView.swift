@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddLocationView: View {
 
+    @EnvironmentObject var mainData: AppData
     @State private var searchQuery: String = ""
     @StateObject private var viewModel = ViewModel()
     @FocusState private var searchFieldIsFocused: Bool
@@ -56,6 +57,7 @@ struct AddLocationView: View {
         }
         .padding()
         .onAppear {
+            viewModel.mainData = mainData
             searchFieldIsFocused = true
         }
     }

@@ -11,8 +11,8 @@ import Combine
 extension HomeView {
 
     @MainActor class ViewModel: ObservableObject {
-
-        @Published private(set) var weatherLocations = [WeatherLocation]()
+        
+        @Published var mainData: AppData?
         @Published var isSelectingMore: Bool = false
         @Published var isPresentingAdd: Bool = false
 
@@ -43,8 +43,16 @@ extension HomeView {
             ).sink { completion in
                 print("completed", #function)
             } receiveValue: { [weak self] weatherLocations in
-                self?.weatherLocations = weatherLocations
+                self?.mainData?.weatherLocations = weatherLocations
             }
+        }
+
+        func removeWeatherLocations(fromIndices indices: IndexSet) {
+            let forRemoval = mainData!.weatherLocations.enumerated().compactMap { index, weatherLocation in
+                indices.contains(index) ? weatherLocation : nil
+            }
+            try? persistenceService.removeWeatherLocations(forRemoval)
+            mainData?.weatherLocations.remove(atOffsets: indices)
         }
     }
 
