@@ -30,7 +30,8 @@ class NetworkServiceMock: ExternalProvider {
         print("\(self)", #function)
         let weatherLocations = [
             MockResponse.weatherByCityResponseBar,
-            MockResponse.weatherByCityResponseGua
+            MockResponse.weatherByCityResponseGua,
+            MockResponse.weatherByCityResponseBaires
         ]
         let mockPassthrough = PassthroughSubject<[WeatherLocation], Error>()
         DispatchQueue.main.asyncAfter(deadline: .now() + responseDelay) {

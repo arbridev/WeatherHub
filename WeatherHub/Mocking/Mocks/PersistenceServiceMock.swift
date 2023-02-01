@@ -9,17 +9,26 @@ import Foundation
 
 class PersistenceServiceMock: Persistence {
 
+    enum State {
+        case standard
+        case emptyLocations
+    }
+
+    var state: State = .standard
+
     func addWeatherLocation(_ weatherLocation: WeatherLocation) throws {
         print("Tried to add a weather location to persistence")
         print(weatherLocation as AnyObject)
-        return
     }
 
     func getWeatherLocations() -> [WeatherLocation]? {
-        let weatherLocations = [
+        var weatherLocations = [
             MockResponse.weatherByCityResponseBar,
             MockResponse.weatherByCityResponseGua
         ]
+        if state == .emptyLocations {
+            weatherLocations.removeAll()
+        }
         return weatherLocations
     }
 

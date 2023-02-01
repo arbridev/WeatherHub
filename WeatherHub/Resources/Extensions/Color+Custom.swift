@@ -32,7 +32,8 @@ extension Color {
         struct Background {
             private init() {}
             static let light: Color = paletteWhite
-            static let dark: Color = paletteDarkGray
+            static let lightBlue: Color = paletteLightBlue
+            static let dark: Color = paletteDarkBlue
             static let inter: Color = paletteGray
         }
 
@@ -47,6 +48,27 @@ extension Color {
             private init() {}
             static let primary: Color = paletteBlue
             static let secondary: Color = paletteGray
+            static let primaryDark: Color = paletteDarkBlue
+        }
+
+        struct Weather {
+            private init() {}
+            static let clear: Color = paletteLightBlue
+            static let clouds: Color = paletteLightBlue
+            static let rain: Color = paletteDarkGray
+            static let snow: Color = paletteDarkGray
+            static let extreme: Color = paletteDarkGray
+            static let unknown: Color = paletteDarkGray
+        }
+
+        struct WeatherIcon {
+            private init() {}
+            static let clear: Color = paletteYellow
+            static let clouds: Color = paletteWhite
+            static let rain: Color = paletteGray
+            static let snow: Color = paletteWhite
+            static let extreme: Color = paletteBlue
+            static let unknown: Color = paletteWhite
         }
     }
 

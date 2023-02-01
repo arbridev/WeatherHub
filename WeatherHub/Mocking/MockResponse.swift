@@ -19,4 +19,8 @@ struct MockResponse {
         MockingHelper.parseJSON(fromFileWithName: "weather-by-city-gua")
     }
 
+    static var weatherByCityResponseBaires: WeatherLocation {
+        MockingHelper.parseJSON(fromFileWithName: "weather-by-city-baires")
+    }
+
 }

@@ -11,7 +11,7 @@ struct DetailView: View {
 
     var weatherLocation: WeatherLocation
     var temperatureSymbol: String {
-        let usesMetric = NSLocale.current.usesMetricSystem
+        let usesMetric = NSLocale.current.measurementSystem == .metric
         return usesMetric ? "℃" : "℉"
     }
 

@@ -15,6 +15,7 @@ extension HomeView {
         @Published var mainData: AppData?
         @Published var isSelectingMore: Bool = false
         @Published var isPresentingAdd: Bool = false
+        @Published var isLoading = false
 
         private let persistenceService: Persistence
         private let networkService: ExternalProvider
@@ -38,11 +39,14 @@ extension HomeView {
                     !persWeatherLocations.isEmpty else {
                 return
             }
+            isLoading = true
             cancellable = networkService.fetchWeather(
                 fromCities: persWeatherLocations.map({ $0.name })
-            ).sink { completion in
+            ).sink { [weak self] completion in
+                self?.isLoading = false
                 print("completed", #function)
             } receiveValue: { [weak self] weatherLocations in
+                self?.isLoading = false
                 self?.mainData?.weatherLocations = weatherLocations
             }
         }
