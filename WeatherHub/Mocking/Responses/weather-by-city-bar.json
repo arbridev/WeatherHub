@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": -69.3228,
+        "lat": 10.0739
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 302.61,
+        "feels_like": 302.56,
+        "temp_min": 302.61,
+        "temp_max": 302.61,
+        "pressure": 1010,
+        "humidity": 43,
+        "sea_level": 1010,
+        "grnd_level": 948
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.11,
+        "deg": 111,
+        "gust": 4.22
+    },
+    "clouds": {
+        "all": 92
+    },
+    "dt": 1673554848,
+    "sys": {
+        "country": "VE",
+        "sunrise": 1673521071,
+        "sunset": 1673562765
+    },
+    "timezone": -14400,
+    "id": 3648522,
+    "name": "Barquisimeto",
+    "cod": 200
+}

@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+class AppData: ObservableObject {
+    @Published var weatherLocations = [WeatherLocation]()
+}
+
 struct ContentView: View {
+
+    @StateObject var mainData = AppData()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        HomeView()
+            .environmentObject(mainData)
     }
 }
 

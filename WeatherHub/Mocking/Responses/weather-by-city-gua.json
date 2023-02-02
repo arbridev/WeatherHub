@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -90.5133,
+        "lat": 14.6407
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 285.06,
+        "feels_like": 284.45,
+        "temp_min": 285.06,
+        "temp_max": 285.06,
+        "pressure": 1025,
+        "humidity": 82
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 7.2,
+        "deg": 20
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1673749800,
+    "sys": {
+        "type": 1,
+        "id": 7079,
+        "country": "GT",
+        "sunrise": 1673699432,
+        "sunset": 1673740268
+    },
+    "timezone": -21600,
+    "id": 3598132,
+    "name": "Guatemala City",
+    "cod": 200
+}
