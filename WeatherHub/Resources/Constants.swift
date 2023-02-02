@@ -12,7 +12,7 @@ struct Constant {
     private init() {}
 
     static let apiRoot = "https://api.openweathermap.org/data/2.5"
-    static let searchQueryMinimum = 1
+    static let searchQueryMinimum = 2
 
     static var apiKey: String {
         Bundle.main.infoDictionary!["API_KEY"] as! String

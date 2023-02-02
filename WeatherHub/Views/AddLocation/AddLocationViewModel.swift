@@ -38,7 +38,7 @@ extension AddLocationView {
         }
 
         func fetchWeatherLocation(withName name: String) {
-            guard name.count > Constant.searchQueryMinimum else {
+            guard name.count >= Constant.searchQueryMinimum else {
                 return
             }
             debounceableCancellable = debounceablePublisher

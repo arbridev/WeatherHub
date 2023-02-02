@@ -28,7 +28,7 @@ struct NoResultView: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.semibold)
-                    .foregroundColor(Color.Custom.Font.announcement)
+                    .foregroundColor(Color.Custom.Font.darkContrast)
                     .multilineTextAlignment(.center)
                     .padding()
                     .padding(.leading, 24)
@@ -37,13 +37,14 @@ struct NoResultView: View {
 
             if isLoading {
                 ProgressView()
+                    .tint(Color.Custom.secondary)
                     .padding()
             }
 
             if let suggestion {
                 Text(suggestion)
                     .font(.title3)
-                    .foregroundColor(Color.Custom.Font.lightContrast)
+                    .foregroundColor(Color.Custom.Background.inter)
                     .multilineTextAlignment(.center)
                     .padding()
             }
@@ -60,5 +61,6 @@ struct NoResultView_Previews: PreviewProvider {
             title: "Title",
             suggestion: "Suggestion, Suggestion, Suggestion, Suggestion"
         )
+        .background(Color.Custom.primary)
     }
 }

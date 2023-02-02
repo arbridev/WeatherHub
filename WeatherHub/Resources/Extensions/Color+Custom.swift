@@ -46,7 +46,7 @@ extension Color {
 
         struct Button {
             private init() {}
-            static let primary: Color = paletteBlue
+            static let primary: Color = paletteDarkBlue
             static let secondary: Color = paletteGray
             static let primaryDark: Color = paletteDarkBlue
         }
